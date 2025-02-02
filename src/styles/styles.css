@@ -5,7 +5,7 @@
 /* My own themes */
 @layer base {
   :root {
-    --background: 0 0% 95%;
+    --background: 0 0% 98%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --popover: 0 0% 100%;
@@ -83,20 +83,24 @@
     }
   }
 
-  .main-layout {
+  .app-layout {
     display: grid;
     grid-template-areas:
-      'sidebar header'
+      'sidebar topbar'
       'sidebar main';
-    grid-template-rows: auto 1fr;
+    grid-template-rows: 60px 1fr;
     grid-template-columns: auto 1fr;
+    height: 100svh;
+
+    position: relative;
+    isolation: isolate;
 
     .sidebar-area {
       grid-area: sidebar;
     }
 
-    .header-area {
-      grid-area: header;
+    .topbar-area {
+      grid-area: topbar;
     }
 
     .main-area {
@@ -105,10 +109,10 @@
 
     @media (width < 768px) {
       grid-template-areas:
-        'header'
         'sidebar'
+        'topbar'
         'main';
-      grid-template-rows: auto auto 1fr;
+      grid-template-rows: auto 60px 1fr;
       grid-template-columns: unset;
     }
   }

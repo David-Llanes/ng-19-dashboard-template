@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { authGuard } from './core/guards/auth.guard';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 
 export const routes: Routes = [
   {
@@ -10,7 +10,8 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/',
+        redirectTo: 'catalogs/allergies',
+        pathMatch: 'full',
       },
       {
         path: 'admin',

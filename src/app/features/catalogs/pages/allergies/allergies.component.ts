@@ -6,5 +6,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './allergies.component.html',
   styleUrl: './allergies.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'page-container' },
 })
 export class AllergiesComponent {}
