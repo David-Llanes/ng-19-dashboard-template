@@ -4,10 +4,11 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MediaQueryService } from '@app/core/services/media-query.service';
 import { LayoutService } from '@app/layouts/services/layout.service';
 import { MenuItem } from '@app/layouts/services/menu.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-menu-item',
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive, TranslatePipe],
   templateUrl: './menu-item.component.html',
   styleUrl: './menu-item.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

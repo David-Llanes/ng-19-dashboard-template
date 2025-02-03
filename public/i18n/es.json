@@ -1,0 +1,77 @@
+{
+  "languages": {
+    "en": "Inglés",
+    "es": "Español"
+  },
+  "navigation": {
+    "admin": "Administración",
+    "laboratory": "Laboratorio",
+    "laboratory-analyses": "Análisis",
+    "laboratory-profiles": "Perfiles",
+    "catalogs": "Catálogos",
+    "catalogs-administration-routes": "Rutas De Administración",
+    "catalogs-allergies": "Alergias",
+    "catalogs-bacteria": "Bacterias",
+    "catalogs-blood-types": "Tipos De Sangre",
+    "catalogs-data-types": "Tipos De Datos",
+    "catalogs-diagnoses": "Diagnósticos",
+    "catalogs-educational-attainments": "Niveles Educativos",
+    "catalogs-genders": "Géneros",
+    "catalogs-insurance-provider-types": "Tipos De Proveedores De Seguros",
+    "catalogs-insurance-providers": "Proveedores De Seguros",
+    "catalogs-kinships": "Parentescos",
+    "catalogs-loincs": "Loincs",
+    "catalogs-magnitudes": "Magnitudes",
+    "catalogs-marital-statuses": "Estados Civiles",
+    "catalogs-measurement-units": "Unidades De Medida",
+    "catalogs-occupations": "Ocupaciones",
+    "catalogs-procedure-types": "Tipos De Procedimientos",
+    "catalogs-procedures": "Procedimientos",
+    "catalogs-religions": "Religiones",
+    "catalogs-symptom-types": "Tipos De Síntomas",
+    "catalogs-symptoms": "Síntomas",
+    "catalogs-turns": "Turnos"
+  },
+  "generics": {
+    "columns-code": "Código",
+    "columns-description": "Descripción",
+    "columns-symbol": "Símbolo",
+    "columns-createdAt": "Creado el",
+    "columns-updatedAt": "Actualizado el",
+    "columns-createdBy": "Creado por",
+    "columns-updatedBy": "Actualizado por",
+    "columns-status": "Estado",
+    "columns-rh-factor": "Factor rh",
+    "status-active": "Activo",
+    "status-inactive": "Inactivo",
+    "status-deleted": "Eliminado",
+    "choose-type": "Selecciona una opción",
+    "no-data": "No hay información para mostrar",
+    "forms": {
+      "add-new": "Agregar nuevo",
+      "search-by-name": "Buscar por nombre",
+      "create-new-item": "Crear nuevo registro",
+      "update-existing-item": "Actualizar registro existente",
+      "save": "Guardar",
+      "save-changes": "Guardar cambios",
+      "additional-fields": "Campos adicionales"
+    }
+  },
+  "laboratory": {
+    "generics": {
+      "description": "Nombre médico",
+      "description-display": "Nombre común",
+      "uom": "Unidad de medida",
+      "result-type": "Tipo de resultado",
+      "reference-value": "Valor de referencia",
+      "expected-value": "Valor esperado",
+      "reference-value-range": "Rango del valor de referencia",
+      "allowed-value-range": "Rango permitido de valores",
+      "min-value": "Valor mínimo",
+      "max-value": "Valor máximo",
+      "min-allowed-value": "Valor mínimo permitido",
+      "max-allowed-value": "Valor máximo permitido",
+      "associate-with-loinc-key": "Asociar con una clave Loinc"
+    }
+  }
+}

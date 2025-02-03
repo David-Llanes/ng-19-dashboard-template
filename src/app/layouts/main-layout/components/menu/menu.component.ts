@@ -15,6 +15,9 @@ import { MenuItemComponent } from '../menu-item/menu-item.component';
   styles: `
     .menu-container {
       padding: 8px;
+
+      white-space: nowrap;
+      overflow: hidden;
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

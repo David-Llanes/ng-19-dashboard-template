@@ -5,7 +5,7 @@
   <li class="section">
     <button class="item dropdown-btn" (click)="toggle($event)">
       <i class="icon" [ngClass]="item.icon"></i>
-      <span class="label">{{ item.key }}</span>
+      <span class="label">{{ item.key | translate }}</span>
       <span class="dropdown-icon" [class.rotate]="isOpen">
         <i class="fa-solid fa-chevron-right"></i>
       </span>
@@ -31,7 +31,7 @@
           <i class="icon" [ngClass]="item.icon"></i>
         }
         <span class="label">
-          {{ item.key }}
+          {{ item.key | translate }}
         </span>
       </a>
     </li>

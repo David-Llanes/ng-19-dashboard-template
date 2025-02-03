@@ -1,0 +1,77 @@
+{
+  "languages": {
+    "en": "English",
+    "es": "Spanish"
+  },
+  "navigation": {
+    "admin": "Administration",
+    "laboratory": "Laboratory",
+    "laboratory-analyses": "Analyses",
+    "laboratory-profiles": "Profiles",
+    "catalogs": "Catalogs",
+    "catalogs-administration-routes": "Administration Routes",
+    "catalogs-allergies": "Allergies",
+    "catalogs-bacteria": "Bacteria",
+    "catalogs-blood-types": "Blood Types",
+    "catalogs-data-types": "Data Types",
+    "catalogs-diagnoses": "Diagnoses",
+    "catalogs-educational-attainments": "Educational Attainments",
+    "catalogs-genders": "Genders",
+    "catalogs-insurance-provider-types": "Insurance Provider Types",
+    "catalogs-insurance-providers": "Insurance Providers",
+    "catalogs-kinships": "Kinships",
+    "catalogs-loincs": "Loincs",
+    "catalogs-magnitudes": "Magnitudes",
+    "catalogs-marital-statuses": "Marital Statuses",
+    "catalogs-measurement-units": "Measurement Units",
+    "catalogs-occupations": "Occupations",
+    "catalogs-procedure-types": "Procedure Types",
+    "catalogs-procedures": "Procedures",
+    "catalogs-religions": "Religions",
+    "catalogs-symptom-types": "Symptom Types",
+    "catalogs-symptoms": "Symptoms",
+    "catalogs-turns": "Turns"
+  },
+  "generics": {
+    "columns-code": "Code",
+    "columns-description": "Description",
+    "columns-symbol": "Symbol",
+    "columns-createdAt": "Created at",
+    "columns-updatedAt": "Updated at",
+    "columns-createdBy": "Created by",
+    "columns-updatedBy": "Updated by",
+    "columns-status": "Status",
+    "columns-rh-factor": "Rh factor",
+    "status-active": "Active",
+    "status-inactive": "Inactive",
+    "status-deleted": "Deleted",
+    "choose-type": "Select an option",
+    "no-data": "No data to show",
+    "forms": {
+      "add-new": "Add new",
+      "search-by-name": "Search by name",
+      "create-new-item": "Create new item",
+      "update-existing-item": "Update existing item",
+      "save": "Save",
+      "save-changes": "Save changes",
+      "additional-fields": "Aditional fields"
+    }
+  },
+  "laboratory": {
+    "generics": {
+      "description": "Medical name",
+      "description-display": "Common name",
+      "uom": "Unit of measure",
+      "result-type": "Result type",
+      "reference-value": "Reference value",
+      "expected-value": "Expected value",
+      "reference-value-range": "Reference value range",
+      "allowed-value-range": "Allowed value ranged",
+      "min-value": "Min. value",
+      "max-value": "Max. value",
+      "min-allowed-value": "Min. allowed value",
+      "max-allowed-value": "Max. allowed value",
+      "associate-with-loinc-key": "Associate with a Loinc key"
+    }
+  }
+}

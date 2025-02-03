@@ -10,18 +10,21 @@
 
     height: 100%;
     width: 0;
+    visibility: hidden;
 
     border-right: 1px solid hsl(var(--border));
     background-color: hsl(var(--card));
-    transition: all 150ms ease-out;
+    transition: all 250ms ease-out;
     overflow: hidden;
 
     &.expanded {
+      visibility: visible;
       width: 250px;
     }
 
     @media (min-width: 768px) {
       width: 60px;
+      visibility: visible;
       position: sticky;
 
       .expanded {
