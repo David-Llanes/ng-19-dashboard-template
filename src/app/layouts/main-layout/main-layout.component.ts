@@ -15,6 +15,7 @@ import { TopbarComponent } from './components/topbar/topbar.component';
       </main>
     </div>
   `,
+  styleUrl: './main-layout.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainLayoutComponent {}

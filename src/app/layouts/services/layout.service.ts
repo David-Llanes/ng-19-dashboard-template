@@ -1,6 +1,6 @@
-import { Injectable, effect, signal, computed, inject } from '@angular/core';
+import { Injectable, computed, effect, inject, signal } from '@angular/core';
+import { MediaQueryService } from '@core/services/media-query.service';
 import { Subject } from 'rxjs';
-import { BreakpointObserver } from '@angular/cdk/layout';
 
 export const SCREENS = {
   SM: 640,
@@ -11,7 +11,7 @@ export const SCREENS = {
 } as const;
 
 export interface LayoutConfig {
-  menuMode?: string;
+  menuMode?: 'static' | 'overlay';
 }
 
 interface LayoutState {
@@ -29,20 +29,17 @@ interface MenuChangeEvent {
   providedIn: 'root',
 })
 export class LayoutService {
-  breakpointObserver = inject(BreakpointObserver);
+  mediaQueryService = inject(MediaQueryService);
 
-  _config: LayoutConfig = {
+  layoutConfig = signal<LayoutConfig>({
     menuMode: 'static',
-  };
+  });
 
-  _state: LayoutState = {
+  layoutState = signal<LayoutState>({
     staticMenuDesktopActive: true,
     overlayMenuActive: false,
     staticMenuMobileActive: false,
-  };
-
-  layoutConfig = signal<LayoutConfig>(this._config);
-  layoutState = signal<LayoutState>(this._state);
+  });
 
   private configUpdate = new Subject<LayoutConfig>();
   private overlayOpen = new Subject<any>();
@@ -54,6 +51,11 @@ export class LayoutService {
   configUpdate$ = this.configUpdate.asObservable();
   overlayOpen$ = this.overlayOpen.asObservable();
 
+  isDesktop = computed(() => this.mediaQueryService.isDesktop());
+
+  isOverlay = computed(() => this.layoutConfig().menuMode === 'overlay');
+
+  // Sidebar active state
   isMobileSidebarActive = computed(
     () =>
       this.layoutState().overlayMenuActive || this.layoutState().staticMenuMobileActive
@@ -64,9 +66,21 @@ export class LayoutService {
       this.layoutState().overlayMenuActive || this.layoutState().staticMenuDesktopActive
   );
 
-  isOpen = computed(() => this.isMobileSidebarActive() || this.isDesktopSidebarActive());
+  // Sidebar open state
+  isMobileSidebarOpen = computed(() => this.isMobileSidebarActive() && !this.isDesktop());
 
-  isOverlay = computed(() => this.layoutConfig().menuMode === 'overlay');
+  isDesktopSidebarOpen = computed(
+    () => this.isDesktopSidebarActive() && this.isDesktop()
+  );
+
+  // Sidebar state
+  isSidebarActive = computed(
+    () => this.isMobileSidebarActive() || this.isDesktopSidebarActive()
+  );
+
+  isSidebarOpen = computed(
+    () => this.isMobileSidebarOpen() || this.isDesktopSidebarOpen()
+  );
 
   transitionComplete = signal<boolean>(false);
 
@@ -75,6 +89,7 @@ export class LayoutService {
   constructor() {
     effect(() => {
       const config = this.layoutConfig();
+
       if (config) {
         this.onConfigUpdate();
       }
@@ -177,16 +192,7 @@ export class LayoutService {
     }
   }
 
-  isDesktop() {
-    return window.innerWidth >= SCREENS['MD'];
-  }
-
-  isMobile() {
-    return !this.isDesktop();
-  }
-
   onConfigUpdate() {
-    this._config = { ...this.layoutConfig() };
     this.configUpdate.next(this.layoutConfig());
   }
 

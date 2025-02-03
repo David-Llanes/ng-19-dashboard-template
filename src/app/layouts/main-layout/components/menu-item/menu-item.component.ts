@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { MediaQueryService } from '@app/core/services/media-query.service';
 import { LayoutService } from '@app/layouts/services/layout.service';
 import { MenuItem } from '@app/layouts/services/menu.service';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -16,7 +15,6 @@ import { TranslatePipe } from '@ngx-translate/core';
 export class MenuItemComponent {
   router = inject(Router);
   layoutService = inject(LayoutService);
-  mediaQueryService = inject(MediaQueryService);
 
   menuItem = input.required<MenuItem>();
   isMenuItemOpen = signal(false);
@@ -43,10 +41,8 @@ export class MenuItemComponent {
   toggle(event: MouseEvent) {
     event.stopPropagation();
 
-    if (
-      !this.layoutService.isDesktopSidebarActive() &&
-      this.mediaQueryService.isDesktop()
-    ) {
+    // Si estamos en Desktop y el sidebar esta cerrado, lo abrimos.
+    if (this.layoutService.isDesktop() && !this.layoutService.isDesktopSidebarOpen()) {
       this.layoutService.onMenuOpen();
       this.isMenuItemOpen.set(true);
       return;
@@ -57,35 +53,23 @@ export class MenuItemComponent {
 
   closeAfterClickOnMobile(event: MouseEvent) {
     event.stopPropagation();
-    event.preventDefault();
 
-    if (
-      this.layoutService.isMobileSidebarActive() &&
-      !this.mediaQueryService.isDesktop() &&
-      this.menuItem().isLink
-    ) {
-      this.layoutService.onMenuToggle();
+    if (this.layoutService.isMobileSidebarOpen() && this.menuItem().isLink) {
+      this.layoutService.onMenuClose();
     }
   }
 
   getSubmenuClass() {
-    const isDesktopSidebarActive = this.layoutService.isDesktopSidebarActive();
-    const isDesktop = this.mediaQueryService.isDesktop();
-
-    // Si esta cerrado, puede permanecer cerrado
+    // Si el MenuItem no esta abierto, no mostramos la clase 'show'
     if (!this.isMenuItemOpen()) return '';
 
-    // Si esta abierto y ademas esta activa la sidebar en desktop y estamos en desktop
-    if (isDesktopSidebarActive && isDesktop) {
-      return 'show';
-    }
-
-    // Cuando esta cerrada la navbar pero seguimos en desktop
-    if (!isDesktopSidebarActive && isDesktop) {
+    // Si estamos en Desktop pero esta cerrado, no mostramos la clase 'show'
+    if (this.layoutService.isDesktop() && !this.layoutService.isDesktopSidebarOpen()) {
       return '';
     }
 
-    // Si esta abierto y no estamos en desktop
+    // Los demas casos, si menu item SI ESTA ABIERTO, mostramos la clase 'show':
+    // Mobile abierto o cerrado y Desktop abierto.
     return 'show';
   }
 }

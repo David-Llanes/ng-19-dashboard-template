@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
-import { MediaQueryService } from '@app/core/services/media-query.service';
 import { LayoutService } from '@app/layouts/services/layout.service';
-import { MenuComponent } from '../menu/menu.component';
 import { UserInfoComponent } from '@app/shared/components/user-info/user-info.component';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,7 +13,6 @@ import { UserInfoComponent } from '@app/shared/components/user-info/user-info.co
 })
 export class SidebarComponent {
   layoutService = inject(LayoutService);
-  mediaQueryService = inject(MediaQueryService);
 
   onCloseSidebar(event: MouseEvent) {
     event.stopPropagation();
@@ -28,12 +26,10 @@ export class SidebarComponent {
   }
 
   sidebarClass = computed(() => {
-    const isDesktop = this.mediaQueryService.isDesktop();
-
-    if (this.layoutService.isMobileSidebarActive() && !isDesktop) {
+    if (this.layoutService.isMobileSidebarOpen()) {
       return 'expanded';
     }
-    if (this.layoutService.isDesktopSidebarActive() && isDesktop) {
+    if (this.layoutService.isDesktopSidebarOpen()) {
       return 'expanded';
     }
     return '';

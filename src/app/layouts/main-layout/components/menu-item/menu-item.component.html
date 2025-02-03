@@ -1,12 +1,17 @@
 @let item = menuItem();
 @let isOpen = isMenuItemOpen();
+@let isOpenSidebar = layoutService.isSidebarOpen();
 
 @if (item.items && item.items.length > 0) {
   <li class="section">
     <button class="item dropdown-btn" (click)="toggle($event)">
       <i class="icon" [ngClass]="item.icon"></i>
       <span class="label">{{ item.key | translate }}</span>
-      <span class="dropdown-icon" [class.rotate]="isOpen">
+      <span
+        class="dropdown-icon"
+        [class.rotate]="isOpen"
+        [class.icon-hidden]="!isOpenSidebar"
+      >
         <i class="fa-solid fa-chevron-right"></i>
       </span>
     </button>

@@ -102,8 +102,13 @@
 .dropdown-icon {
   flex-shrink: 0;
   transition: rotate 250ms ease-out;
+  transition: opacity 200ms ease-out;
 
   &.rotate {
     rotate: 90deg;
+  }
+
+  &.icon-hidden {
+    opacity: 0;
   }
 }
