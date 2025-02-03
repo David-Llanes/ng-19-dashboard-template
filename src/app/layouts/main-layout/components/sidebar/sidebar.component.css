@@ -1,0 +1,79 @@
+.sidebar-container {
+  height: 100%;
+  isolation: isolate;
+
+  .sidebar {
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    width: 0;
+
+    border-right: 1px solid hsl(var(--border));
+    background-color: hsl(var(--card));
+    transition: all 150ms ease-out;
+    overflow: hidden;
+
+    &.expanded {
+      width: 250px;
+    }
+
+    @media (min-width: 768px) {
+      width: 60px;
+      position: sticky;
+
+      .expanded {
+        width: 250px;
+      }
+    }
+  }
+
+  .logo-container {
+    flex-shrink: 0;
+    height: 60px;
+    padding: 6px;
+
+    .logo-placeholder {
+      height: 100%;
+      width: 100%;
+
+      border-radius: 0.5rem;
+      background-color: hsl(var(--muted));
+    }
+  }
+
+  .menu-content {
+    flex: 1;
+    padding-block: 0.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: hsl(var(--border));
+      border-radius: 5px;
+    }
+  }
+
+  .account-container {
+    flex-shrink: 0;
+    height: 60px;
+    padding: 6px;
+  }
+}
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+
+  background-color: hsla(0, 0%, 0%, 0.5);
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}

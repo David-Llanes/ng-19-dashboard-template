@@ -1,0 +1,39 @@
+@let item = menuItem();
+@let isOpen = isMenuItemOpen();
+
+@if (item.items && item.items.length > 0) {
+  <li class="section">
+    <button class="item dropdown-btn" (click)="toggle($event)">
+      <i class="icon" [ngClass]="item.icon"></i>
+      <span class="label">{{ item.key }}</span>
+      <span class="dropdown-icon" [class.rotate]="isOpen">
+        <i class="fa-solid fa-chevron-right"></i>
+      </span>
+    </button>
+    <div class="sub-menu" [ngClass]="getSubmenuClass()">
+      <ul class="sub-menu-list">
+        @for (subItem of item.items; track subItem.key) {
+          <app-menu-item [menuItem]="subItem" />
+        }
+      </ul>
+    </div>
+  </li>
+} @else {
+  @if (item.isLink) {
+    <li>
+      <a
+        (click)="closeAfterClickOnMobile($event)"
+        class="item"
+        [routerLink]="item.routerLink"
+        routerLinkActive="activeLink"
+      >
+        @if (item.icon) {
+          <i class="icon" [ngClass]="item.icon"></i>
+        }
+        <span class="label">
+          {{ item.key }}
+        </span>
+      </a>
+    </li>
+  }
+}

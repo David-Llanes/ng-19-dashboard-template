@@ -1,0 +1,58 @@
+@let isMobileSidebarActive = this.layoutService.isMobileSidebarActive();
+
+<div class="sidebar-container">
+  <div class="sidebar" [ngClass]="sidebarClass()">
+    <!-- LOGO -->
+    <div class="logo-container">
+      <app-user-info />
+    </div>
+
+    <!-- MENU -->
+    <app-menu class="menu-content" />
+
+    <!-- ACCOUNT -->
+    <div class="account-container">
+      <app-user-info />
+    </div>
+  </div>
+
+  @if (isMobileSidebarActive) {
+    <div
+      class="sidebar-overlay"
+      (click)="onCloseSidebar($event)"
+      (keydown)="onKeyDown($event)"
+    ></div>
+  }
+</div>
+
+<ng-template #tailwind>
+  @let isMobileSidebarActive = this.layoutService.isMobileSidebarActive();
+
+  <div class="isolate h-full">
+    <div
+      class="fixed z-10 flex h-full flex-col overflow-hidden border-r bg-card transition-all md:sticky"
+      [ngClass]="sidebarClass()"
+    >
+      <!-- LOGO -->
+      <div class="h-[60px] shrink-0 border-b p-2">
+        <div class="size-full rounded-lg bg-muted"></div>
+      </div>
+
+      <!-- MENU -->
+      <app-menu class="scrollbar-thin flex-1 overflow-y-auto overflow-x-hidden" />
+
+      <!-- ACCOUNT -->
+      <div class="h-[60px] shrink-0 border-t p-2">
+        <div class="size-full rounded-lg bg-muted"></div>
+      </div>
+    </div>
+
+    @if (isMobileSidebarActive) {
+      <div
+        class="fixed inset-0 bg-black/50 md:hidden"
+        (click)="onCloseSidebar($event)"
+        (keydown)="onKeyDown($event)"
+      ></div>
+    }
+  </div>
+</ng-template>

@@ -2,48 +2,39 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { MediaQueryService } from '@app/core/services/media-query.service';
 import { LayoutService } from '@app/layouts/services/layout.service';
+import { MenuComponent } from '../menu/menu.component';
+import { UserInfoComponent } from '@app/shared/components/user-info/user-info.component';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [CommonModule],
-  template: `
-    @let isSidebarActive = this.layoutService.isSidebarActive();
-
-    <div class="isolate h-full">
-      <div
-        class="fixed z-10 h-full w-0 overflow-hidden border-r bg-card transition-all md:sticky md:w-[60px]"
-        [ngClass]="sidebarClass()"
-      >
-        Sidebar
-      </div>
-
-      @if (isSidebarActive) {
-        <div
-          class="fixed inset-0 bg-black/50 md:hidden"
-          (click)="toggleSidebar()"
-          (keypress)="toggleSidebar()"
-        ></div>
-      }
-    </div>
-  `,
+  imports: [CommonModule, MenuComponent, UserInfoComponent],
+  templateUrl: './sidebar.component.html',
+  styleUrl: './sidebar.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent {
   layoutService = inject(LayoutService);
   mediaQueryService = inject(MediaQueryService);
 
-  toggleSidebar() {
-    this.layoutService.onMenuToggle();
+  onCloseSidebar(event: MouseEvent) {
+    event.stopPropagation();
+    this.layoutService.onMenuClose();
+  }
+
+  onKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape' || event.keyCode === 27) {
+      this.layoutService.onMenuClose();
+    }
   }
 
   sidebarClass = computed(() => {
-    const isBigDevice = this.mediaQueryService.isDesktop();
+    const isDesktop = this.mediaQueryService.isDesktop();
 
-    if (this.layoutService.isSidebarActive() && !isBigDevice) {
-      return 'w-[250px]';
+    if (this.layoutService.isMobileSidebarActive() && !isDesktop) {
+      return 'expanded';
     }
-    if (this.layoutService.isDesktopSidebarActive() && isBigDevice) {
-      return 'md:w-[251px]';
+    if (this.layoutService.isDesktopSidebarActive() && isDesktop) {
+      return 'expanded';
     }
     return '';
   });

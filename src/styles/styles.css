@@ -49,7 +49,7 @@
   }
 
   .page-container {
-    --max-width: 1024px;
+    --max-width: 1440px;
     --gap: clamp(1rem, 4vw, 2rem);
     --full: minmax(var(--gap), 1fr);
     --content: min(var(--max-width), 100% - var(--gap) * 2);
@@ -88,7 +88,7 @@
     grid-template-areas:
       'sidebar topbar'
       'sidebar main';
-    grid-template-rows: 60px 1fr;
+    grid-template-rows: auto 1fr;
     grid-template-columns: auto 1fr;
     height: 100svh;
 
@@ -112,8 +112,18 @@
         'sidebar'
         'topbar'
         'main';
-      grid-template-rows: auto 60px 1fr;
+      grid-template-rows: auto auto 1fr;
       grid-template-columns: unset;
     }
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  .scrollbar-gutter-stable {
+    scrollbar-gutter: stable;
   }
 }
