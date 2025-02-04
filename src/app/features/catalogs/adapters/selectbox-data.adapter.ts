@@ -5,7 +5,7 @@ export class SelectBoxDataAdapter {
   static fromApi(data: KeyValueDTO): SelectBoxData {
     return {
       id: data.id,
-      code: data.code || '',
+      code: data.code ?? '',
       description: data.description,
       status: data.status,
       disabled: data.status !== Statuses.Active,
