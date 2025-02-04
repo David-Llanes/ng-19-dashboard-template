@@ -12,9 +12,9 @@ import {
   SUPPORTED_LANGUAGES,
 } from '@core/lib/constants/language';
 
-// import { loadMessages, locale } from 'devextreme/localization';
-// import esMessages from 'devextreme/localization/messages/es.json';
-// import enMessages from 'devextreme/localization/messages/en.json';
+import { loadMessages, locale } from 'devextreme/localization';
+import esMessages from 'devextreme/localization/messages/es.json';
+import enMessages from 'devextreme/localization/messages/en.json';
 
 @Injectable({
   providedIn: 'root',
@@ -40,8 +40,8 @@ export class LanguageService {
     this.translate.use(language);
     this.currentLanguage.set(language);
 
-    // this.initMessages();
-    // locale(language);
+    this.initMessages();
+    locale(language);
 
     localStorage.setItem(STORAGE_LANGUAGE_KEY, language);
   }
@@ -72,7 +72,7 @@ export class LanguageService {
     }
 
     // SOLO NECESARIO PARA QUE LOS COMPONENTES DE DEX-EXTREME CAMBIEN
-    // location.reload();
+    location.reload();
   }
 
   private validateLanguageOrDefault(language: string): string {
@@ -81,8 +81,8 @@ export class LanguageService {
       : DEFAULT_LANGUAGE;
   }
 
-  // private initMessages() {
-  //   loadMessages(enMessages);
-  //   loadMessages(esMessages);
-  // }
+  private initMessages() {
+    loadMessages(enMessages);
+    loadMessages(esMessages);
+  }
 }

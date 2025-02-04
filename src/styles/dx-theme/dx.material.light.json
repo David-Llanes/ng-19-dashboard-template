@@ -1,0 +1,46 @@
+{
+    "items": [
+        {
+            "key": "$base-border-radius",
+            "value": "8px"
+        },
+        {
+            "key": "$base-accent",
+            "value": "rgba(0, 142, 230, 1)"
+        },
+        {
+            "key": "$base-text-color",
+            "value": "rgba(2, 8, 23, 1)"
+        },
+        {
+            "key": "$base-bg",
+            "value": "rgba(249, 252, 253, 1)"
+        },
+        {
+            "key": "$base-border-color",
+            "value": "rgba(226, 235, 240, 1)"
+        },
+        {
+            "key": "$base-success",
+            "value": "rgba(139, 195, 74, 1)"
+        },
+        {
+            "key": "$base-warning",
+            "value": "rgba(250, 198, 42, 1)"
+        },
+        {
+            "key": "$base-danger",
+            "value": "rgba(239, 68, 68, 1)"
+        },
+        {
+            "key": "$base-font-family",
+            "value": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+        }
+    ],
+    "baseTheme": "material.blue.light",
+    "outputColorScheme": "light",
+    "makeSwatch": false,
+    "version": "24.2.3",
+    "widgets": [],
+    "removeExternalResources": true
+}
