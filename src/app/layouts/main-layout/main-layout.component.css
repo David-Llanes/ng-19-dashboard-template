@@ -13,14 +13,18 @@
 
   .sidebar-area {
     grid-area: sidebar;
+    z-index: 3;
   }
 
   .topbar-area {
     grid-area: topbar;
+    z-index: 2;
   }
 
   .main-area {
     grid-area: main;
+    z-index: 1;
+
     overflow: auto;
   }
 
