@@ -3,10 +3,11 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 import { LayoutService } from '@app/layouts/services/layout.service';
 import { UserInfoComponent } from '@app/shared/components/user-info/user-info.component';
 import { MenuComponent } from '../menu/menu.component';
+import { CompanyInfoComponent } from '@shared/components/company-info/company-info.component';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [CommonModule, MenuComponent, UserInfoComponent],
+  imports: [CommonModule, MenuComponent, UserInfoComponent, CompanyInfoComponent],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
