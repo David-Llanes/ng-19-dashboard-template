@@ -23,6 +23,8 @@ module.exports = {
         popover: 'hsl(var(--popover))',
         accent: 'hsl(var(--accent))',
         destructive: 'hsl(var(--destructive))',
+        success: 'hsl(var(--success))',
+        warning: 'hsl(var(--warning))',
         border: 'hsl(var(--border))',
       },
       borderRadius: {
